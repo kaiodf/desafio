@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  quarkus-desafio:
+    container_name: quarkus-desafio
+    image: quarkus-desafio/quarkus-jvm:1.0
+    build:
+      context: ./quarkus/
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - 8080:8080
+    networks:
+      - indicator
+    
+  bb-indicadores:
+    container_name: bb-indicadores
+    image: bb-indicadores/angular:1.0
+    build:
+      context: ./angular/
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - heroku-net
+    depends_on:      
+      - heroku-quarkus
+    environment:      
+      - API_URL=http://localhost:4200
+      - PORT=80
+
+networks:
+  heroku-net:
+    driver: bridge

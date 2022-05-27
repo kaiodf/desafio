@@ -1,0 +1,18 @@
+<h2 class="titulo">Indicadores</h2>
+<table class="tabela">
+  <thead class="tabela__cabecalho">
+    <th class="tabela__cabecalho__conteudo">Value</th>
+    <th class="tabela__cabecalho__conteudo">Id</th>
+    <th class="tabela__cabecalho__conteudo">unit</th>
+  </thead>
+  <tbody *ngIf="indicadores.length > 0; else listaVazia">
+    <tr class="tabela__linha" *ngFor="let objInd of indicadores">
+      <td class="tabela__conteudo">{{ objInd.countryiso3code}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<ng-template #listaVazia>
+  <p>Nenhum Rest consumido</p>
+</ng-template>

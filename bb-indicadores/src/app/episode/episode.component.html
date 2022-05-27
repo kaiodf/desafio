@@ -1,0 +1,18 @@
+<h2 class="titulo">Episodes</h2>
+<table class="tabela">
+  <thead class="tabela__cabecalho">
+    <th class="tabela__cabecalho__conteudo">Id</th>
+    <th class="tabela__cabecalho__conteudo">Name</th>
+  </thead>
+  <tbody *ngIf="episodes.length > 0; else listaVazia">
+    <tr class="tabela__linha" *ngFor="let episode of episodes">
+      <td class="tabela__conteudo">{{ episode.id}}</td>
+      <td class="tabela__conteudo">{{ episode.name}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<ng-template #listaVazia>
+  <p>Nenhum Rest consumido</p>
+</ng-template>
